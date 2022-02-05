@@ -11,8 +11,8 @@ const EditDashboard = () => {
     <Fragment>
       <div className="group">
         <p>
-          The system should create a page where for every array member in the
-          JSON file we will see a row with property-value and under it input
+          Task: The system should create a page where for every array member in
+          the JSON file we will see a row with property-value and under it input
           fields to edit the value for every property of the array member.
         </p>
         <p style={{ marginLeft: "1rem" }}>

@@ -40,7 +40,12 @@ const JsonCode = () => {
       ) : (
         ""
       )}
-      <button onClick={submitJsonChanges} style={btnStyle}>
+      <button
+        disabled={jsonEdited ? false : true}
+        onClick={submitJsonChanges}
+        className={jsonEdited ? "" : "gray"}
+        style={btnStyle}
+      >
         Save JSON
       </button>
       <textarea

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useDispatch } from "react-redux";
 import { dataActions } from "../store/data-slice";
 import LongText from "./LongText";
@@ -22,11 +22,14 @@ const Group = ({ groupData }) => {
       displayData.push({ inputType: "email", key, value });
     } else if (
       new Date(value.replace(/\s/g, "")) !== "Invalid Date" &&
-      !isNaN(new Date(value.replace(/\s/g, "")))
+      !isNaN(new Date(value.replace(/\s/g, ""))) &&
+      !/^$/.test(value)
     ) {
       displayData.push({ inputType: "date", key, value });
     } else if (value.length > 35) {
       displayData.push({ inputType: "textarea", key, value });
+    } else if (String(value).match(/^[$]\d*(?:\.\d{0,2})?/)) {
+      displayData.push({ inputType: "currencyNumber", key, value });
     } else {
       displayData.push({ inputType: "string", key, value });
     }
@@ -88,6 +91,16 @@ const Group = ({ groupData }) => {
       }
     }
   }
+  function keyUpCurrencyHandler(e) {
+    if (e.keyCode === 13) {
+      const newValue =
+        "$" + e.target.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      if (newValue !== "") {
+        dispatch(dataActions.changeValue([groupIndex, e.target.id, newValue]));
+        e.target.value = "";
+      }
+    }
+  }
 
   const jsxToBeDisplayed = displayData.map((property) => {
     let jsxEditOption;
@@ -119,20 +132,6 @@ const Group = ({ groupData }) => {
           </div>
         </div>
       );
-    } else if (
-      property.inputType !== "id" &&
-      property.inputType !== "index" &&
-      property.inputType !== "date" &&
-      property.inputType !== "textarea"
-    ) {
-      jsxEditOption = (
-        <input
-          onKeyUp={keyUpHandler}
-          placeholder="Set new value..."
-          type={property.inputType}
-          id={property.key}
-        />
-      );
     } else if (property.inputType === "date") {
       jsxEditOption = (
         <input onBlur={onBlurHandler} type="datetime-local" id={property.key} />
@@ -142,6 +141,32 @@ const Group = ({ groupData }) => {
         <textarea
           placeholder="Set new value..."
           onKeyUp={keyUpHandler}
+          id={property.key}
+        />
+      );
+    } else if (property.inputType === "currencyNumber") {
+      jsxEditOption = (
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <span>$</span>
+          <input
+            style={{ maxWidth: "150px", marginLeft: "0" }}
+            onKeyUp={keyUpCurrencyHandler}
+            placeholder="Set new balance..."
+            type="number"
+            id={property.key}
+          />
+        </div>
+      );
+    } else if (
+      ["id", "index", "date", "textarea", "currencyNumber"].includes(
+        property.inputType
+      ) !== true
+    ) {
+      jsxEditOption = (
+        <input
+          onKeyUp={keyUpHandler}
+          placeholder="Set new value..."
+          type={property.inputType}
           id={property.key}
         />
       );

@@ -37,6 +37,14 @@
       &:active {
         transform: scale(0.97);
       }
+      &.gray {
+        background-color: #cdd6df8d;
+        color: #33333350;
+        box-shadow: none;
+        &:hover {
+          cursor: auto;
+        }
+      }
     }
     textarea {
       margin-top: 10px;
