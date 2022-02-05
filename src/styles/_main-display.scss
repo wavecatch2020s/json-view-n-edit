@@ -1,0 +1,45 @@
+.main-container {
+  margin: 4rem;
+  padding: 2rem;
+  width: 1600px;
+  max-width: 96%;
+  background-color: rgba(226, 224, 224, 0.303);
+  margin: 0 auto;
+  border-radius: 24px;
+  position: relative;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .json-code-wrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    button {
+      // background-color: #76b4eb;
+      box-shadow: 1px 1px 2px #527b9e;
+      border-radius: 10px;
+      padding: 12px;
+      outline: none;
+      border: none;
+      font-size: 1.2rem;
+      &:hover {
+        cursor: pointer;
+      }
+      &:active {
+        transform: scale(0.97);
+      }
+    }
+    textarea {
+      margin-top: 10px;
+      flex: 1;
+      border-radius: 5px;
+      padding: 1rem;
+      width: 100%;
+      min-height: 100%;
+      resize: none;
+    }
+  }
+}

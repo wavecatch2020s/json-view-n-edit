@@ -1,0 +1,121 @@
+.group {
+  background-color: rgba(233, 233, 233, 0.207);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  overflow-x: auto;
+
+  .property {
+    display: flex;
+    min-width: 200px;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0;
+    padding: 0 1rem;
+    border-right: 1px solid rgba(51, 51, 51, 0.131);
+    text-align: center;
+
+    p {
+      width: 100%;
+      max-width: 200px;
+      word-break: break-word;
+      &.long-text {
+        // min-height: 150px;
+        white-space: nowrap;
+        text-align: left !important;
+        max-height: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      &.hidden {
+        white-space: normal;
+      }
+    }
+
+    .see-more {
+      background-color: rgba(255, 255, 255, 0.248);
+      border-radius: 10px;
+      padding: 4px 10px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    * {
+      padding: 5px;
+      margin-bottom: 5px;
+    }
+    .radio-buttons {
+      width: 200px;
+      display: flex;
+      .radio-button {
+        width: 90px;
+      }
+      * {
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    input {
+      max-width: 180px;
+      background-color: transparent;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid rgba(51, 51, 51, 0.207);
+      border-radius: 4px;
+      padding: 8px;
+      margin: 0 15px;
+      min-width: 80%;
+      input::-webkit-input-placeholder {
+        /* WebKit browsers */
+        line-height: 1.5em;
+      }
+      input:-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        line-height: 1.5em;
+      }
+      input::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        line-height: 1.5em;
+      }
+      input:-ms-input-placeholder {
+        /* Internet Explorer 10+ */
+        line-height: 1.5em;
+      }
+      &:focus {
+        background-color: rgba(255, 255, 255, 0.268);
+      }
+    }
+    input[type="radio"] {
+      border: 0px;
+      width: 100%;
+      height: 1rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    textarea {
+      max-width: 180px;
+      background-color: transparent;
+      outline: none;
+      border: none;
+      border: 1px solid rgba(51, 51, 51, 0.207);
+      border-radius: 4px;
+      padding: 8px;
+      margin: 0 15px;
+      min-width: 80%;
+      resize: none;
+      font-family: "Roboto", sans-serif;
+      &:focus {
+        background-color: rgba(255, 255, 255, 0.268);
+      }
+    }
+
+    &.index {
+      min-width: 70px;
+    }
+  }
+}
