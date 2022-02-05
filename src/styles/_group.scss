@@ -21,7 +21,9 @@
       width: 100%;
       max-width: 200px;
       word-break: break-word;
+      min-height: 50px;
       &.long-text {
+        min-height: auto;
         // min-height: 150px;
         white-space: nowrap;
         text-align: left !important;
@@ -35,9 +37,13 @@
     }
 
     .see-more {
-      background-color: rgba(255, 255, 255, 0.248);
-      border-radius: 10px;
-      padding: 4px 10px;
+      // background-color: rgba(255, 255, 255, 0.248);
+      // border-radius: 10px;
+      // padding: 4px 10px;
+      text-decoration: underline;
+      font-size: 0.9rem;
+      font-weight: bolder;
+      color: rgb(80, 103, 114);
       &:hover {
         cursor: pointer;
       }
